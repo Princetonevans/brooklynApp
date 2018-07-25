@@ -9,12 +9,14 @@ import { AboutComponent } from './about/about.component';
 import { BlogShowComponent } from './blog-show/blog-show.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:id', component: BlogShowComponent },
   { path: 'about', component: AboutComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -27,7 +29,8 @@ const appRoutes: Routes = [
     AboutComponent,
     BlogShowComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
