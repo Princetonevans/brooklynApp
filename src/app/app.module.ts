@@ -10,6 +10,11 @@ import { BlogShowComponent } from './blog-show/blog-show.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { DataService } from './services/data.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './services/inMemoryData.service';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { BlogService } from './blog/blog.service';
 
 const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent },
@@ -34,11 +39,20 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+
+// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+// and returns simulated server responses.
+// Remove it when a real server is ready to receive requests.
+HttpClientInMemoryWebApiModule.forRoot(
+  InMemoryDataService, { dataEncapsulation: false }
+),
     RouterModule.forRoot(
       appRoutes
     )
   ],
-  providers: [],
+  providers: [DataService,
+  BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
