@@ -11,11 +11,16 @@ import { Blog } from './blog';
 
 export class BlogComponent implements OnInit {
 
+  pageTitle = 'All Blogs';
   blogs = Blogs;
   selectedBlog: Blog;
   errorMessage: string;
 
   constructor(private blogService: BlogService) { }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product List: ' + message;
+  }
 
   ngOnInit() {
     this.blogService.getBlogs().subscribe(
