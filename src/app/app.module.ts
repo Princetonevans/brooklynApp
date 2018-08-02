@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BlogComponent } from './blog/blog.component';
@@ -13,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { DataService } from './services/data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/inMemoryData.service';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
+
 import { BlogService } from './blog/blog.service';
 
 const appRoutes: Routes = [
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
 
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
@@ -51,8 +53,10 @@ HttpClientInMemoryWebApiModule.forRoot(
       appRoutes
     )
   ],
-  providers: [DataService,
-  BlogService],
+  providers: [
+    DataService,
+    BlogService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

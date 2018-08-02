@@ -1,54 +1,26 @@
     <!-- Page Content -->
     <div class="container">
-<li *ngFor="let blog of blogs"><span class="badge">{{blog.id}}</span>{{blog.name}}</li>
+
         <div class="row">
 
           <!-- Blog Entries Column -->
           <div class="col-md-8">
 
-            <h1 class="my-4">Page Heading
+            <h1 class="my-4">Book Reviews
               <small>Secondary Text</small>
             </h1>
 
             <!-- Blog Post -->
-            <div class="card mb-4">
-              <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <div class="card mb-4" *ngFor="let blog of blogs">
+              <img class="card-img-top" src="{{blog.img}}" alt="Card image cap">
               <div class="card-body">
-                <h2 class="card-title">Post Title</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                <a routerLink="/blog/1" class="btn btn-primary">Read More &rarr;</a>
+                <h2 class="card-title">{{blog.title}}</h2>
+                <p class="card-text">{{blog.body}}</p>
+                <a [routerLink]="['/blog', blog.id]" class="btn btn-primary" (click)="onSelect(blog)">Read More &rarr;</a>
               </div>
               <div class="card-footer text-muted">
                 Posted on January 1, 2017 by
-                <a href="#">Start Bootstrap</a>
-              </div>
-            </div>
-
-            <!-- Blog Post -->
-            <div class="card mb-4">
-              <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-              <div class="card-body">
-                <h2 class="card-title">Post Title</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                <a routerLink="/blog/2" class="btn btn-primary">Read More &rarr;</a>
-              </div>
-              <div class="card-footer text-muted">
-                Posted on January 1, 2017 by
-                <a href="#">Start Bootstrap</a>
-              </div>
-            </div>
-
-            <!-- Blog Post -->
-            <div class="card mb-4">
-              <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-              <div class="card-body">
-                <h2 class="card-title">Post Title</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                <a routerLink="/blog/3" class="btn btn-primary">Read More &rarr;</a>
-              </div>
-              <div class="card-footer text-muted">
-                Posted on January 1, 2017 by
-                <a href="#">Start Bootstrap</a>
+                <a href="#">Brooklyn</a>
               </div>
             </div>
 
@@ -134,7 +106,7 @@
       <!-- Footer -->
       <footer class="py-5 bg-dark">
         <div class="container">
-          <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+          <p class="m-0 text-center text-white">Copyright &copy; Brooklyn 2018</p>
         </div>
         <!-- /.container -->
       </footer>

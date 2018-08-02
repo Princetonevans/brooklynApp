@@ -1,4 +1,6 @@
 export class Blog {
   id: number;
-  name: string;
+  title: string;
+  body: string;
+  img: string;
 }

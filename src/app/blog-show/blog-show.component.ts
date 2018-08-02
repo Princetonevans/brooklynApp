@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Blogs } from '../mock-blogs';
 
 @Component({
   selector: 'app-blog-show',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogShowComponent implements OnInit {
 
-  constructor() { }
+  blog = Blogs;
+
+  constructor(private route: ActivatedRoute) {
+
+   }
 
   ngOnInit() {
+    let id = +this.route.snapshot.paramMap.get('id');
+
   }
 
 }
