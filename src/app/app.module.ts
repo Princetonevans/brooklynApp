@@ -16,6 +16,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/inMemoryData.service';
 
 import { BlogService } from './blog/blog.service';
+import { StarComponent } from './shared/star/star.component';
 
 const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent },
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     BlogShowComponent,
     PageNotFoundComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    StarComponent
   ],
   imports: [
     BrowserModule,

@@ -3,4 +3,5 @@ export class Blog {
   title: string;
   body: string;
   img: string;
+  starRating: number;
 }
