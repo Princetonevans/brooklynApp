@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Blogs } from '../mock-blogs';
+// import { Blogs } from '../mock-blogs';
 import { BlogService } from '../blog/blog.service';
 import { Blog } from '../blog/blog'
 
@@ -11,7 +11,7 @@ import { Blog } from '../blog/blog'
 })
 export class BlogShowComponent implements OnInit {
 
-  blog;
+  blog: Blog;
   // selectedBlog = Blog;
 
   constructor(private route: ActivatedRoute,

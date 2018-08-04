@@ -10,7 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
 
 export class BlogService {
 
-  private blogsUrl = 'api/blogs';  // URL to web api
+  private blogsUrl = 'api/blogs/';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -35,7 +35,7 @@ export class BlogService {
   }
 
   getBlogById(id: number): Observable<Blog> {
-    return this.http.get<Blog>(this.blogsUrl + `/${id}`)
+    return this.http.get<Blog>(this.blogsUrl + `${id}`)
 
   }
   //  private handleError(err: HttpErrorResponse){
