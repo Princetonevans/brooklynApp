@@ -37,7 +37,8 @@
             by
             <a routerLink="/about">Brooklyn</a>
           </p>
-
+          <p>{{blog?.type | uppercase}}</p>
+          <app-star [rating]='blog?.starRating'></app-star>
           <hr>
 
           <!-- Date/Time -->
@@ -69,6 +70,7 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
 
           <button routerLink="/blog" type="button" class="btn btn-primary">Back</button>
+          <button routerLink="/blog/edit" type="button" class="btn btn-primary" style="margin-left: 10px">Edit</button>
           <hr>
 
           <!-- Comments Form -->

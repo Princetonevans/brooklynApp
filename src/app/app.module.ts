@@ -17,9 +17,11 @@ import { InMemoryDataService }  from './services/inMemoryData.service';
 
 import { BlogService } from './blog/blog.service';
 import { StarComponent } from './shared/star/star.component';
+import { EditBlogComponent } from './edit-blog/edit-blog.component';
 
 const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent },
+  { path: 'blog/edit', component: EditBlogComponent },
   { path: 'blog/:id', component: BlogShowComponent },
   { path: 'about', component: AboutComponent },
   { path: 'home', component: HomeComponent },
@@ -38,7 +40,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     HomeComponent,
     LoginComponent,
-    StarComponent
+    StarComponent,
+    EditBlogComponent
   ],
   imports: [
     BrowserModule,

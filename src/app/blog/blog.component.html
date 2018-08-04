@@ -15,7 +15,8 @@
               <img class="card-img-top" src="{{blog.img}}" alt="Card image cap">
               <div class="card-body">
                 <h2 class="card-title">{{blog.title}}</h2>
-                <div><app-star [rating]='blog.starRating' (ratingClicked)='onRatingClicked($event)'></app-star></div>
+                <p>Type: {{blog.type | uppercase}}</p>
+                <app-star [rating]='blog.starRating' (ratingClicked)='onRatingClicked($event)'></app-star>
                 <p class="card-text">{{blog.body}}</p>
                 <a [routerLink]="['/blog', blog.id]" class="btn btn-primary" (click)="onSelect(blog)">Read More &rarr;</a>
               </div>
