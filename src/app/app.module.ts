@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -18,11 +18,12 @@ import { InMemoryDataService }  from './services/inMemoryData.service';
 import { BlogService } from './blog/blog.service';
 import { StarComponent } from './shared/star/star.component';
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
+import { BlogResolver } from './blog/blog-resolver.service';
 
 const appRoutes: Routes = [
-  { path: 'blog', component: BlogComponent },
-  { path: 'blog/edit', component: EditBlogComponent },
-  { path: 'blog/:id', component: BlogShowComponent },
+  { path: 'blog', component: BlogComponent},
+  { path: 'blog/edit/:id', component: EditBlogComponent, resolve: { blog: BlogResolver} },
+  { path: 'blog/:id', component: BlogShowComponent, resolve: { blog: BlogResolver} },
   { path: 'about', component: AboutComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -60,7 +61,8 @@ HttpClientInMemoryWebApiModule.forRoot(
   ],
   providers: [
     DataService,
-    BlogService
+    BlogService,
+    BlogResolver
   ],
   bootstrap: [AppComponent]
 })

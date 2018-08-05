@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { BlogService } from '../blog/blog.service';
+import { Blog } from '../blog/blog'
+import { Model } from '../models/blog.model';
 
 @Component({
   selector: 'app-edit-blog',
@@ -7,9 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditBlogComponent implements OnInit {
 
-  constructor() { }
+  pageTitle: string = 'Product Edit';
+  blog: Blog;
+  model = new Model(1, 'Snoop', 'some new content', 'images', 5, 'fiction')
+
+  constructor(private route: ActivatedRoute,
+              private blogService: BlogService) { }
 
   ngOnInit() {
+    this.blog = this.route.snapshot.data['blog'];
   }
 
+  onBlogRetrieved(blog: Blog): void {
+    this.blog = blog;
+    if (this.blog.id === 0) {
+        this.pageTitle = 'Add Product';
+    } else {
+      this.pageTitle = `Edit Product: ${this.blog.title}`;
+    }
+  }
 }

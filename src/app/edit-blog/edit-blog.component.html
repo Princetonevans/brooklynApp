@@ -2,23 +2,23 @@
 <form>
   <div class="form-group">
     <label for="exampleFormControlInput1">Title</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+    <input type="text" name="title"   class="form-control" id="exampleFormControlInput1" [(ngModel)]="blog.title" required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Image</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Image">
+    <input type="text" name="img" class="form-control" id="exampleFormControlInput1" [(ngModel)]="blog.img">
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Type</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Fiction</option>
-      <option>Non-Fiction</option>
+    <select [(ngModel)]="blog.type" name="type"class="form-control" id="exampleFormControlSelect1">
+      <option>fiction</option>
+      <option>non-fiction</option>
       <option>Other</option>
     </select>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Rating</label>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select [(ngModel)]="blog.starRating" name="starRating"class="form-control" id="exampleFormControlSelect1">
       <option>1</option>
       <option>2</option>
       <option>3</option>
@@ -28,7 +28,8 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Content</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea [(ngModel)]="blog.body" name="body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
+  <button type="submit" class="btn btn-success" style="margin-bottom: 10px">Submit</button>
 </form>
 </div>

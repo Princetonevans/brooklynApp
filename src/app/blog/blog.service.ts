@@ -17,6 +17,9 @@ export class BlogService {
     // private messageService: MessageService,
   ){}
 
+
+  // get all blogs
+
   getBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.blogsUrl).pipe(
            tap(data => console.log('All: ' + JSON.stringify(data))),
@@ -34,19 +37,11 @@ export class BlogService {
       return throwError(errorMessage);
   }
 
+// get one blog
+
   getBlogById(id: number): Observable<Blog> {
-    return this.http.get<Blog>(this.blogsUrl + `${id}`)
+    return this.http.get<Blog>(`/api/blogs/${id}`)
 
   }
-  //  private handleError(err: HttpErrorResponse){
-  //     let errorMessage = '';
-  //     if (err.error instanceof ErrorEvent) {
-  //       errorMessage = `An error occurred: ${err.error.message}`;
-  //     } else {
-  //       errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`
-  //     }
-  //     console.error(errorMessage);
-  //     return throwError(errorMessage);
-  // }
 
 }

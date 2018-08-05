@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from './blog.service';
-import { Blogs } from '../mock-blogs';
 import { Blog } from './blog';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -12,11 +12,12 @@ import { Blog } from './blog';
 export class BlogComponent implements OnInit {
 
   pageTitle = 'All Blogs';
-  blogs = Blogs;
+  blogs: Blog;
   selectedBlog: Blog;
   errorMessage: string;
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService,
+               private route: ActivatedRoute) { }
 
   onRatingClicked(message: string): void {
     this.pageTitle = 'Product List: ' + message;
