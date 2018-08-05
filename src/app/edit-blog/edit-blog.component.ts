@@ -12,7 +12,7 @@ import { Model } from '../models/blog.model';
 })
 export class EditBlogComponent implements OnInit {
 
-  pageTitle: string = 'Product Edit';
+  pageTitle: string = 'Blog Edit';
   blog: Blog;
   model = new Model(1, 'Snoop', 'some new content', 'images', 5, 'fiction')
 
@@ -20,7 +20,9 @@ export class EditBlogComponent implements OnInit {
               private blogService: BlogService) { }
 
   ngOnInit() {
-    this.blog = this.route.snapshot.data['blog'];
+    this.route.data.subscribe(data => {
+      this.onBlogRetrieved(data['blog']);
+    });
   }
 
   onBlogRetrieved(blog: Blog): void {

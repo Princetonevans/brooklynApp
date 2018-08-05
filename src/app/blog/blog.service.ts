@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of, throwError } from 'rxjs'
 import { Blog } from './blog'
 import { catchError, tap } from 'rxjs/operators';
+import { Model } from '../models/blog.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +21,8 @@ export class BlogService {
 
   // get all blogs
 
-  getBlogs(): Observable<Blog[]> {
-    return this.http.get<Blog[]>(this.blogsUrl).pipe(
+  getBlogs(): Observable<any> {
+    return this.http.get<any>(this.blogsUrl).pipe(
            tap(data => console.log('All: ' + JSON.stringify(data))),
            catchError(this.handleError)
     );

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from './blog.service';
 import { Blog } from './blog';
 import { ActivatedRoute } from '@angular/router';
+import { Model } from '../models/blog.model'
 
 @Component({
   selector: 'app-blog',
@@ -15,7 +16,7 @@ export class BlogComponent implements OnInit {
   blogs: Blog;
   selectedBlog: Blog;
   errorMessage: string;
-
+  model: Model;
   constructor(private blogService: BlogService,
                private route: ActivatedRoute) { }
 
