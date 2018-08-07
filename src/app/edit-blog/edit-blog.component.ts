@@ -15,6 +15,10 @@ export class EditBlogComponent implements OnInit {
   pageTitle: string = 'Blog Edit';
   blog: Blog;
   model = new Model(1, 'Snoop', 'some new content', 'images', 5, 'fiction')
+  types = ['fiction', 'non-fiction', 'other'];
+  ratings = [1,2,3,4,5];
+  submitted = false;
+  newOne;
 
   constructor(private route: ActivatedRoute,
               private blogService: BlogService) { }
@@ -32,5 +36,15 @@ export class EditBlogComponent implements OnInit {
     } else {
       this.pageTitle = `Edit Product: ${this.blog.title}`;
     }
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.submitted)
+  }
+
+  newBlog() {
+    this.newOne = this.model = new Model(1, 'Snoop', 'some new content', 'images', 5, 'fiction');
+    console.log(this.newOne)
   }
 }
