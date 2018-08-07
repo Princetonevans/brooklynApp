@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 import { BlogService } from '../blog/blog.service';
 import { Blog } from '../blog/blog'
@@ -14,19 +14,21 @@ export class EditBlogComponent implements OnInit {
 
   pageTitle: string = 'Blog Edit';
   blog: Blog;
-  model = new Model(1, 'Snoop', 'some new content', 'images', 5, 'fiction')
+  model: any[] = [];
   types = ['fiction', 'non-fiction', 'other'];
   ratings = [1,2,3,4,5];
   submitted = false;
   newOne;
-
+  blogId;
   constructor(private route: ActivatedRoute,
-              private blogService: BlogService) { }
+              private blogService: BlogService,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.onBlogRetrieved(data['blog']);
     });
+    this.blogId = this.route.snapshot.paramMap.get('id');
   }
 
   onBlogRetrieved(blog: Blog): void {
@@ -39,12 +41,14 @@ export class EditBlogComponent implements OnInit {
   }
 
   onSubmit() {
+    this.blogService.editBlog(this.blog)
+    .subscribe(model => this.model.push(model));
     this.submitted = true;
-    console.log(this.submitted)
+    this.router.navigate(['/blog/', this.blogId])
   }
 
   newBlog() {
-    this.newOne = this.model = new Model(1, 'Snoop', 'some new content', 'images', 5, 'fiction');
+    this.newOne = this.blog = new Model(1, 'Snoop', 'some new content', 'images', 5, 'fiction');
     console.log(this.newOne)
   }
 }

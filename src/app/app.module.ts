@@ -19,6 +19,7 @@ import { BlogService } from './blog/blog.service';
 import { StarComponent } from './shared/star/star.component';
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
 import { BlogResolver } from './blog/blog-resolver.service';
+import { UserComponent } from './user/user.component';
 
 const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     StarComponent,
-    EditBlogComponent
+    EditBlogComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

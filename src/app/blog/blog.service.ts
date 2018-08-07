@@ -13,6 +13,13 @@ export class BlogService {
 
   private blogsUrl = 'api/blogs/';  // URL to web api
 
+   httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'my-auth-token'
+    })
+  };
+
   constructor(
     private http: HttpClient,
     // private messageService: MessageService,
@@ -43,6 +50,10 @@ export class BlogService {
   getBlogById(id: number): Observable<Blog> {
     return this.http.get<Blog>(`/api/blogs/${id}`)
 
+  }
+
+  editBlog(model: Model): Observable<Model> {
+    return this.http.put<Blog>(this.blogsUrl, model, this.httpOptions)
   }
 
 }

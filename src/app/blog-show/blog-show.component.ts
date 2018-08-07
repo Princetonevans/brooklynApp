@@ -11,7 +11,6 @@ import { Blog } from '../blog/blog'
 export class BlogShowComponent implements OnInit {
 
   blog: Blog;
-  // selectedBlog = Blog;
 
   constructor(private route: ActivatedRoute) {
 
