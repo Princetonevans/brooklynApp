@@ -11,7 +11,18 @@ import { Model } from '../models/blog.model';
 
 export class BlogService {
 
-  private blogsUrl = 'api/blogs/';  // URL to web api
+  private blogsUrl = 'https://blog-app-api.herokuapp.com/blogs/';  // URL to web api
+
+  initializeBlog() {
+    return {
+        id: 0,
+        title: null,
+        body: null,
+        img: null,
+        starRating: null,
+        genre: null,
+    }
+  }
 
    httpOptions = {
     headers: new HttpHeaders({
@@ -48,12 +59,24 @@ export class BlogService {
 // get one blog
 
   getBlogById(id: number): Observable<Blog> {
-    return this.http.get<Blog>(`/api/blogs/${id}`)
+    return this.http.get<Blog>(`https://blog-app-api.herokuapp.com/blogs/${id}`)
 
   }
 
-  editBlog(model: Model): Observable<Model> {
-    return this.http.put<Blog>(this.blogsUrl, model, this.httpOptions)
+  // Edit Blog
+  editBlog(model: Model, id: number): Observable<Model> {
+    return this.http.put<Blog>(`https://blog-app-api.herokuapp.com/blogs/${id}`, model, this.httpOptions)
+  }
+
+  // Create Blog
+  createBlog(model): Observable<Model> {
+    // model.id = 0;
+    return this.http.post<Blog>('https://blog-app-api.herokuapp.com/blogs/', model, this.httpOptions)
+  }
+
+  // Edit Blog
+  deleteBlog(id: number): Observable<{}> {
+    return this.http.delete(`https://blog-app-api.herokuapp.com/blogs/${id}`, this.httpOptions)
   }
 
 }

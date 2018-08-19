@@ -5,7 +5,7 @@ export class Blog {
     body: string;
     img: string;
     starRating: number;
-    type: string;
+    genre: string;
   // ) {}
 
 }

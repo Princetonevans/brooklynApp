@@ -12,17 +12,19 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DataService } from './services/data.service';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './services/inMemoryData.service';
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService }  from './services/inMemoryData.service';
 
 import { BlogService } from './blog/blog.service';
 import { StarComponent } from './shared/star/star.component';
 import { EditBlogComponent } from './edit-blog/edit-blog.component';
 import { BlogResolver } from './blog/blog-resolver.service';
 import { UserComponent } from './user/user.component';
+import { CreateBlogComponent } from './create-blog/create-blog.component';
 
 const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent},
+  { path: 'create', component: CreateBlogComponent},
   { path: 'blog/edit/:id', component: EditBlogComponent, resolve: { blog: BlogResolver} },
   { path: 'blog/:id', component: BlogShowComponent, resolve: { blog: BlogResolver} },
   { path: 'about', component: AboutComponent },
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     LoginComponent,
     StarComponent,
     EditBlogComponent,
-    UserComponent
+    UserComponent,
+    CreateBlogComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +57,9 @@ const appRoutes: Routes = [
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.
 // Remove it when a real server is ready to receive requests.
-HttpClientInMemoryWebApiModule.forRoot(
-  InMemoryDataService, { dataEncapsulation: false }
-),
+// HttpClientInMemoryWebApiModule.forRoot(
+//   InMemoryDataService, { dataEncapsulation: false }
+// ),
     RouterModule.forRoot(
       appRoutes
     )

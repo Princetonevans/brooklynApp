@@ -15,7 +15,7 @@ export class EditBlogComponent implements OnInit {
   pageTitle: string = 'Blog Edit';
   blog: Blog;
   model: any[] = [];
-  types = ['fiction', 'non-fiction', 'other'];
+  genres = ['fiction', 'non-fiction', 'other'];
   ratings = [1,2,3,4,5];
   submitted = false;
   newOne;
@@ -41,14 +41,17 @@ export class EditBlogComponent implements OnInit {
   }
 
   onSubmit() {
-    this.blogService.editBlog(this.blog)
-    .subscribe(model => this.model.push(model));
+    this.blogService.editBlog(this.blog, this.blogId)
+    .subscribe(model => this.model.push(this.model));
     this.submitted = true;
-    this.router.navigate(['/blog/', this.blogId])
+    this.router.navigate(['/blog/', this.blogId]);
   }
 
-  newBlog() {
-    this.newOne = this.blog = new Model(1, 'Snoop', 'some new content', 'images', 5, 'fiction');
-    console.log(this.newOne)
+  onDelete() {
+    this.blogService.deleteBlog(this.blogId)
+    .subscribe(model => this.model.push(this.model));
+    this.submitted = true;
+    this.router.navigate(['/blog/']);
   }
+
 }
