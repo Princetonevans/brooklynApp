@@ -21,6 +21,7 @@ import { EditBlogComponent } from './edit-blog/edit-blog.component';
 import { BlogResolver } from './blog/blog-resolver.service';
 import { UserComponent } from './user/user.component';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
+// import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent},
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/blog', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
   providers: [
     DataService,
     BlogService,
-    BlogResolver
+    BlogResolver,
+    // AuthService
   ],
   bootstrap: [AppComponent]
 })

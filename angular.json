@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "brooklynApp"
+  "defaultProject": "brooklynApp",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
